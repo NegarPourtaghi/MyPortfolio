@@ -37,7 +37,7 @@
 import DarkMode from "./DarkMode.vue";
 
     export default{
-    props: ['mode'],
+    props: ['mode','reloadHome','reloadABout','reloadPortfolio','reloadContact'],
     data() {
         return {
             changeColor: false,

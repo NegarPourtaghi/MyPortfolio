@@ -340,7 +340,8 @@ import VueEasyPieChart from '../../src/Components/VueEasyPieChart.vue'
       
       return {
          screenIsLoading:true,
-         reloadheader:true
+         reloadheader:true,
+         
       }
     },
   created(){

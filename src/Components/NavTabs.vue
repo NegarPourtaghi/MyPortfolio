@@ -4,7 +4,8 @@
         <ul class="nav-tabs">
 
             <li class="nav-item">
-                <button class="nav-link" :class="{'active': currentTab == 'All'}" @click="currentTab = 'All'">All </button>
+                <button class="nav-link" :class="{'active': currentTab == 'All'}" @click="currentTab = 'All'">All
+                </button>
             </li>
             <li class="nav-item">
                 <button class="nav-link" :class="{'active': currentTab == 'Logo'}" @click="currentTab = 'Logo'">Logo
@@ -21,56 +22,55 @@
 
 
         </ul>
+        <div class="row" v-if="images">
 
-    <div class="tab-pane col-4 mycol" v-for="(image , index) in images" :key="index"  v-show="Sort == Sort" data-aos="fade-right" data-aos-duration="3000" data-aos-once="false">
-        <div class="hovercolor">
+            <div class="tab-pane col-4 mycol" v-for="{Sort ,Category, Tag, preview, index} in images" :key="index"
+                v-show="Sort == currentTab" data-aos="fade-right" data-aos-duration="3000" data-aos-once="false">
+                <div class="hovercolor">
 
-            <img class="sample1 imgh" :src="image.preview">
-                <h1 class="hovertext fade-in t1" >
-                      {{image.Category}}
+                    <img class="sample1 imgh" :src="preview">
 
-                </h1>
-                <h1 class="hovertext fade-in t1" >
-                       {{image.Tag}}
 
-                </h1>
 
-                <h1 class="hovertext fade-in t1" >
-                        {{image.Sort}}
+                    <h1 class="hovertext fade-in t1">
+                        {{Category}}
 
-                </h1>
+                    </h1>
+                </div>
+            </div>
+            <div class="row" v-if="images">
+
+                <div class="tab-pane col-4 mycol" v-for="{Sort ,Category, Tag, preview, index} in images" :key="index"
+                    v-show="Category == currentTab" data-aos="fade-right" data-aos-duration="3000"
+                    data-aos-once="false">
+                    <div class="hovercolor">
+
+                        <img class="sample1 imgh" :src="preview">
+
+
+
+                        <h1 class="hovertext fade-in t1">
+                            {{Category}}
+
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-
-</div>
 </template>
 
 
 <script>
     import axios from 'axios'
     export default {
-        props: {
 
-            images: {
-                type: Array,
-                required: true
-            },
-            image: {
-                type: Object,
-                required: true
-            },
-            preview: {
-                type: String,
-            },
-
-        },
         data() {
             return {
                 currentTab: 'All',
 
-                images: [
-
-                ]
+                images: []
 
             }
         },
@@ -195,6 +195,7 @@
 
     .tab-pane {
         padding: 15px 15px;
+
     }
 
     .dark .nav-link {

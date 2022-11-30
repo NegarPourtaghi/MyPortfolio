@@ -1,6 +1,6 @@
 <template>
   <div class="app"   :class="mode">
-   <Navbar :mode="mode" @toggle="toggle" v-if="['home', 'about','portfolio','contact'].indexOf($route.name) > -1"></Navbar>
+   <Navbar  @toggle="toggle" v-if="['home', 'about','portfolio','contact'].indexOf($route.name) > -1"></Navbar>
    <router-view></router-view>
    
 
@@ -15,7 +15,8 @@ export default {
   name: 'app',
   data () {
    return{
-mode: 'light'
+mode: 'light',
+
    }
   },
 
